@@ -13,7 +13,7 @@ const decodeToken = (token) => {
 
 export const authMiddleware = async (req, res, next) => {
     let token;
-    if(req.header('Authorization')) {
+    if (req.header('Authorization')) {
         token = req.header('Authorization').split(" ")[1];
     }
     if (!token) {

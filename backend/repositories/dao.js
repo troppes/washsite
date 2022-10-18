@@ -1,5 +1,6 @@
 import Database from 'better-sqlite3';
-const db = new Database('database.db', { verbose: console.log });
+
+const db = new Database('database.db', {verbose: console.log});
 
 export default class {
 
@@ -12,6 +13,7 @@ export default class {
             }
         })
     }
+
     static get(stmt, params) {
         return new Promise((res, rej) => {
             try {

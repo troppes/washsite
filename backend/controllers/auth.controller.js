@@ -10,12 +10,12 @@ const basicAuthDecrypt = (authString) => {
 
 const returnInvalidCredentials = (res) => {
     res.status(401);
-    return res.json({ error: 'Invalid username or password' });
+    return res.json({error: 'Invalid username or password'});
 
 }
 
 export const login = async (req, res) => {
-    let { username, password } = basicAuthDecrypt(req.headers.authorization);
+    let {username, password} = basicAuthDecrypt(req.headers.authorization);
     const user = await repository.getUserByUsername(username)
 
     if (!user) {
@@ -23,36 +23,11 @@ export const login = async (req, res) => {
     } else {
         bcrypt.compare(password, user.password, (err, result) => {
             if (result) {
-                const accessToken = encodeToken({ userId: user.id, type: user.type });
-                return res.json({ accessToken });
+                const accessToken = encodeToken({userId: user.id, type: user.type});
+                return res.json({accessToken});
             } else {
                 return returnInvalidCredentials(res);
             }
         });
     }
-}
-
-export const createUser = async (req, res) => {
-    let { username, password } = basicAuthDecrypt(req.headers.authorization);
-    const user = await repository.getUserByUsername(username)
-
-    if (!user) {
-        returnInvalidCredentials(res)
-    } else {
-        // TODO
-        bcrypt.compare(password, user.password, (err, result) => {
-            if (result) {
-                const accessToken = encodeToken({ userId: user.id, type: user.type });
-                return res.json({ accessToken });
-            } else {
-                return returnInvalidCredentials(res);
-            }
-        });
-    }
-}
-
-
-export const listUsers = async (req, res) => {
-    let users = await repository.getAllUsers();
-    return res.send({ users });
 }
