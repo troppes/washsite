@@ -3,7 +3,8 @@ import * as express from 'express';
 
 const router = express.Router()
 
-router.get("/", machinesController.getAllItems);
-router.get("/:id", machinesController.getItemById)
+router.get("/", machinesController.getAllMachines);
+router.get("/:id", machinesController.getMachineById);
+router.get("/:id", machinesController.getMachineByName)
 
 export default router

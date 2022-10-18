@@ -1,14 +1,19 @@
 import repository from '../repositories/repository.js';
 
 export default class {
-    static async getAllItems(req, res) {
-        let items = await repository.getAllItems();
-        return res.send({ items });
+    static async getAllMachines(req, res) {
+        let machines = await repository.getAllMachines();
+        return res.send({ machines });
     };
 
-    static async getItemById(req, res) {
-        let item = await repository.getItemById(req.params.id)
-        return res.send({ item });
+    static async getMachineById(req, res) {
+        let machine = await repository.getMachineById(req.params.id)
+        return res.send({ machine });
+    }
+
+    static async getMachineByName(req, res) {
+        let machine = await repository.getMachineByName(req.params.id)
+        return res.send({ machine });
     }
 
 }

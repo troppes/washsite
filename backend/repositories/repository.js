@@ -1,16 +1,20 @@
 import dao from './dao.js';
 
 export default class {
-    static async getAllItems() {
-        return await dao.all("SELECT * FROM items", [])
+    static async getAllMachines() {
+        return await dao.all("SELECT * FROM machines", [])
     }
 
     static async getAllUsers() {
         return await dao.all("SELECT * FROM users", [])
     }
 
-    static async getItemById(id) {
-        return await dao.get("SELECT * FROM items WHERE id = ?", [id])
+    static async getMachineById(id) {
+        return await dao.get("SELECT * FROM machines WHERE id = ?", [id])
+    }
+
+    static async getMachineByName(name) {
+        return await dao.get("SELECT * FROM machines WHERE name = ?", [name])
     }
 
     static async getUserByUsername(username) {

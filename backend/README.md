@@ -6,6 +6,10 @@ To set everything up and create the SQLite database, use the script `npm i` foll
 
 To authenticate yourself, please use the `/api/auth/login` route. You can authenticate yourself there with BASIC auth. Afterwards, you get a JWT token. All other routes are only accessible wit this token.
 
+## Enviroment Variables
+
+If variables are set by the docker container, they will be read first. Afterwards the variables from the .env file will be used.
+
 ## User creation
 
 For creating users, use the route `/api/users`.
@@ -38,7 +42,6 @@ For this project, the JWT tokens are set to not expire, since the washing machin
 
 ## TODO
 
-- Rename table and add structure for the machines
 - Add Users route to create and delete users
 - Add env support
 - Docker Support

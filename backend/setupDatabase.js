@@ -5,7 +5,7 @@ const db = new Database('database.db', { verbose: console.log });
 const saltRounds = 10;
 
 db.exec("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT,username TEXT, password TEXT, type TEXT)");
-db.exec("CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, price NUMERIC)");
+db.exec("CREATE TABLE IF NOT EXISTS machines (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT UNIQUE, status TEXT)");
 
 
 const insert = db.prepare('INSERT INTO users (username, password, type) VALUES (?, ?, ?)');
