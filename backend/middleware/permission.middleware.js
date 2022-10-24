@@ -1,3 +1,5 @@
+import statuscodes from "../lib/statuscodes.js";
+
 let userTypes = {
     'admin': {
         routes: [
@@ -43,8 +45,7 @@ export const hasRights = (req, res, next) => {
         }
     }
 
-    res.status(403);
-    res.json({error: 'User has no permissions to this ressource'});
+    statuscodes.send403(res, 'User has no permissions to this ressource');
 
 }
 

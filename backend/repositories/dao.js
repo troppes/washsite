@@ -24,4 +24,14 @@ export default class {
         })
     }
 
+    static run(stmt, params) {
+        return new Promise((res, rej) => {
+            try {
+                return res(db.prepare(stmt).run(params));
+            } catch (e) {
+                return rej(e.message);
+            }
+        })
+    }
+
 }

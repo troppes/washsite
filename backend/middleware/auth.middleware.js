@@ -1,5 +1,6 @@
 import njwt from 'njwt';
 import repository from '../repositories/repository.js';
+import statuscodes from "../lib/statuscodes.js";
 
 const {APP_SECRET = 'secret'} = process.env;
 
@@ -40,8 +41,7 @@ export const authenticated = (req, res, next) => {
     if (req.userId) {
         next();
     } else {
-        res.status(401);
-        res.json({error: 'User not authenticated'});
+        statuscodes.send401(res, 'User not authenticated')
     }
 }
 
