@@ -34,8 +34,13 @@ export default class {
         return await dao.run("UPDATE machines SET name = ?, status = ? WHERE id = ?", [name, status, id])
     }
 
-    static async modifyMachineByName(name, status) {
-        return await dao.run("UPDATE machines SET status = ? WHERE id = ?", [status, name])
+    static async modifyMachineByName(name, newName = null, status = null) {
+        if(newName === null || status === null) {
+            const { oldName, oldStatus } = await this.getMachineById(id);
+            newName = newName || oldName;
+            status = status || oldStatus;
+        }
+        return await dao.run("UPDATE machines SET name = ?, status = ? WHERE name = ?", [newName, status, name])
     }
     
     static async getAllUsers() {

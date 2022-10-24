@@ -81,7 +81,7 @@ export default class {
     }
     static async modifyMachineByName(req, res) {
         try {
-            const machine = await repository.modifyMachineByName(req.params.name, req.body.status);
+            const machine = await repository.modifyMachineByName(req.params.name, req.body.name, req.body.status);
             if (machine['changes'] !== 0) {
                 statuscodes.send200(res, 'Machine modified successfully');
             } else {

@@ -8,8 +8,8 @@ router.get("/id/:id", machinesController.getMachineById);
 router.get("/name/:name", machinesController.getMachineByName);
 router.delete("/id/:id", machinesController.deleteMachineById);
 router.delete("/name/:name", machinesController.deleteMachineByName);
-router.post("/", machinesController.addNewMachine);
-router.put("/id/:id", machinesController.modifyMachineById);
-router.put("/name/:name", machinesController.modifyMachineByName);
+router.put("/", machinesController.addNewMachine);
+router.post("/id/:id", machinesController.modifyMachineById);
+router.post("/name/:name", machinesController.modifyMachineByName);
 
 export default router;
