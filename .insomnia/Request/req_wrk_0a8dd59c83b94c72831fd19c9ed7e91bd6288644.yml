@@ -1,0 +1,32 @@
+_id: req_wrk_0a8dd59c83b94c72831fd19c9ed7e91bd6288644
+type: Request
+parentId: fld_wrk_0a8dd59c83b94c72831fd19c9ed7e91b6516c232
+modified: 1666697070718
+created: 1666606066676
+url: "{{ base_url }}/machines/name/{{ name }}"
+name: Updates a machine by name
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+      "name": "wash46",
+      "status": "spinning"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication:
+  type: bearer
+  token: "{{bearerToken}}"
+  prefix: ""
+metaSortKey: -1666606066676
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

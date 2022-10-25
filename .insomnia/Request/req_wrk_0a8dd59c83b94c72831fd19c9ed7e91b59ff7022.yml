@@ -1,0 +1,24 @@
+_id: req_wrk_0a8dd59c83b94c72831fd19c9ed7e91b59ff7022
+type: Request
+parentId: fld_wrk_0a8dd59c83b94c72831fd19c9ed7e91b6516c232
+modified: 1666094372711
+created: 1666092178533
+url: "{{ base_url }}/machines/name/{{ name }}"
+name: Find a machine by name
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication:
+  type: bearer
+  token: "{{bearerToken}}"
+  prefix: ""
+metaSortKey: -1666092178533
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

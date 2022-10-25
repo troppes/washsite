@@ -1,0 +1,24 @@
+_id: req_9a410a2925374907aa6572531c104b9c
+type: Request
+parentId: fld_wrk_0a8dd59c83b94c72831fd19c9ed7e91b66a36e77
+modified: 1666606113120
+created: 1666094720385
+url: "{{ base_url }}/auth/login"
+name: JWT display
+description: ""
+method: POST
+body: {}
+parameters: []
+headers: []
+authentication:
+  type: basic
+  username: display
+  password: display
+metaSortKey: -1666092178539
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

@@ -1,0 +1,34 @@
+_id: req_wrk_0a8dd59c83b94c72831fd19c9ed7e91bda4a549d
+type: Request
+parentId: fld_wrk_0a8dd59c83b94c72831fd19c9ed7e91b5b7dcd14
+modified: 1666697646814
+created: 1666690287305
+url: "{{ base_url }}/users/"
+name: Adds a new user
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+      "name": "user",
+      "password": "password",
+      "type": "admin"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_dfafd7b47993447fbfa6101c2a12d617
+authentication:
+  type: bearer
+  token: "{{bearerToken}}"
+  prefix: ""
+metaSortKey: -1666690287305
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

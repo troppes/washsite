@@ -1,0 +1,24 @@
+_id: req_wrk_0a8dd59c83b94c72831fd19c9ed7e91b381f586c
+type: Request
+parentId: fld_wrk_0a8dd59c83b94c72831fd19c9ed7e91b6516c232
+modified: 1666094710453
+created: 1666094710453
+url: "{{ base_url }}/machines/name/{{ name }}"
+name: Deletes a machine by name
+description: ""
+method: DELETE
+body: {}
+parameters: []
+headers: []
+authentication:
+  type: bearer
+  token: "{{bearerToken}}"
+  prefix: ""
+metaSortKey: -1666094710453
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

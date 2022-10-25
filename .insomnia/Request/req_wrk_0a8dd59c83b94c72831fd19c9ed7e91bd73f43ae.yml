@@ -1,0 +1,31 @@
+_id: req_wrk_0a8dd59c83b94c72831fd19c9ed7e91bd73f43ae
+type: Request
+parentId: fld_wrk_0a8dd59c83b94c72831fd19c9ed7e91b5b7dcd14
+modified: 1666698761966
+created: 1666694232698
+url: "{{ base_url }}/users/id/{{ id }}"
+name: Updates a user by ID
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+      "type": "display3"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication:
+  type: bearer
+  token: "{{bearerToken}}"
+  prefix: ""
+metaSortKey: -1666694232698
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

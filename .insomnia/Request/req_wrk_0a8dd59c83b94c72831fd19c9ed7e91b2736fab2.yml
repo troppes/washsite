@@ -1,0 +1,24 @@
+_id: req_wrk_0a8dd59c83b94c72831fd19c9ed7e91b2736fab2
+type: Request
+parentId: fld_wrk_0a8dd59c83b94c72831fd19c9ed7e91b66a36e77
+modified: 1666690034905
+created: 1666092178540
+url: "{{ base_url }}/auth/login"
+name: Authentication to obtain JWT token
+description: ""
+method: POST
+body: {}
+parameters: []
+headers: []
+authentication:
+  type: basic
+  username: "{{ httpUsername }}"
+  password: "{{ httpPassword }}"
+metaSortKey: -1666092178540
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
