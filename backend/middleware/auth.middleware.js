@@ -1,19 +1,20 @@
 import njwt from 'njwt';
 import repository from '../repositories/repository.js';
+import statuscodes from "../lib/statuscodes.js";
 
 const {APP_SECRET = 'secret'} = process.env;
 
 export const encodeToken = (tokenData) => {
-    return njwt.create(tokenData, APP_SECRET).compact();
+    return njwt.create(tokenData, APP_SECRET).setExpiration().compact();
 }
 
 const decodeToken = (token) => {
-    return njwt.verify(token, APP_SECRET).setExpiration();
+    return njwt.verify(token, APP_SECRET);
 }
 
 export const authMiddleware = async (req, res, next) => {
     let token;
-    if(req.header('Authorization')) {
+    if (req.header('Authorization')) {
         token = req.header('Authorization').split(" ")[1];
     }
     if (!token) {
@@ -40,8 +41,7 @@ export const authenticated = (req, res, next) => {
     if (req.userId) {
         next();
     } else {
-        res.status(401);
-        res.json({error: 'User not authenticated'});
+        statuscodes.send401(res, 'User not authenticated')
     }
 }
 

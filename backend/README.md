@@ -1,6 +1,7 @@
 ## Setup
 
 To set everything up and create the SQLite database, use the script `npm i` followed by `npm run setup`. With this the database will be created. Customize the entries by going into the TODO file and changing the default users.
+To configure the server, rename the .env_dist to .env and edit the variables.
 
 ## Authentication
 
@@ -43,6 +44,5 @@ For this project, the JWT tokens are set to not expire, since the washing machin
 ## TODO
 
 - Add Users route to create and delete users
-- Add env support
 - Docker Support
 - Machine Error Detection
