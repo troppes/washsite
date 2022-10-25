@@ -5,11 +5,11 @@ import statuscodes from "../lib/statuscodes.js";
 const {APP_SECRET = 'secret'} = process.env;
 
 export const encodeToken = (tokenData) => {
-    return njwt.create(tokenData, APP_SECRET).compact();
+    return njwt.create(tokenData, APP_SECRET).setExpiration().compact();
 }
 
 const decodeToken = (token) => {
-    return njwt.verify(token, APP_SECRET).setExpiration();
+    return njwt.verify(token, APP_SECRET);
 }
 
 export const authMiddleware = async (req, res, next) => {
