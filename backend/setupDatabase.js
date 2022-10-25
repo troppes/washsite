@@ -8,7 +8,7 @@ const db = new Database('database.db', {verbose: console.log});
 const saltRounds = 10;
 
 const DEMO_USERS = [
-    {username: 'washer', password: 'washer', type: 'washer'},
+    {username: 'washer', password: 'washer', type: 'machine'},
     {username: 'display', password: 'display', type: 'display'}
 ]
 
@@ -18,11 +18,11 @@ const DEMO_MACHINES = [
     {name: 'Wash3', status: 'spinning'}
 ]
 
-db.exec("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT,username TEXT, password TEXT, type TEXT)");
+db.exec("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT UNIQUE, password_hash TEXT, type TEXT)");
 db.exec("CREATE TABLE IF NOT EXISTS machines (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT UNIQUE, status TEXT)");
 
 
-const userInsert = db.prepare('INSERT INTO users (username, password, type) VALUES (?, ?, ?)');
+const userInsert = db.prepare('INSERT INTO users (name, password_hash, type) VALUES (?, ?, ?)');
 const machineInsert = db.prepare('INSERT INTO machines (name, status) VALUES (?, ?)');
 
 const userTransactions = db.transaction((users) => {

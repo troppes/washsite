@@ -30,6 +30,7 @@ export const hasRights = (req, res, next) => {
             case 'Basic':
                 return next();
             case 'Bearer':
+                console.log(req.userType);
                 const routes = userTypes[req.userType].routes;
                 if (routes) {
                     // Find out if the URL exists in the rights table
