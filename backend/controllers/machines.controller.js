@@ -9,7 +9,6 @@ export default class {
         } catch (e) {
             statuscodes.send409(res, e);
         }
-
     };
     static async getMachineById(req, res) {
         try {
@@ -70,7 +69,7 @@ export default class {
     static async modifyMachineById(req, res) {
         try {
             const machine = await repository.modifyMachineById(req.params.id,req.body.name, req.body.status);
-            if (machine['changes'] !== 0) {
+            if (machine.hasOwnProperty('changes')) {
                 statuscodes.send200(res, 'Machine modified successfully');
             } else {
                 statuscodes.send404(res, 'Machine not found');
@@ -82,7 +81,7 @@ export default class {
     static async modifyMachineByName(req, res) {
         try {
             const machine = await repository.modifyMachineByName(req.params.name, req.body.name, req.body.status);
-            if (machine['changes'] !== 0) {
+            if (machine.hasOwnProperty('changes')) {
                 statuscodes.send200(res, 'Machine modified successfully');
             } else {
                 statuscodes.send404(res, 'Machine not found');

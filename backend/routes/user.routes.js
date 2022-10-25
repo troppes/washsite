@@ -4,8 +4,9 @@ import * as express from 'express';
 const router = express.Router()
 
 router.get("/", userController.listUsers);
-router.post("/", userController.createUser);
+router.put("/", userController.createUser);
 router.get("/id/:id", userController.getUserById);
-router.get("/name/:name", userController.getUserByUsername);
+router.post("/id/:id", userController.modifyUserById);
+router.delete("/id/:id",userController.deleteUser);
 
 export default router;
