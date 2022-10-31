@@ -6,6 +6,7 @@ import authRoutes from './routes/auth.routes.js';
 import machineRoutes from './routes/machines.routes.js';
 import userRoutes from './routes/user.routes.js';
 import * as dotenv from 'dotenv';
+import cors from 'cors';
 
 dotenv.config()
 
@@ -14,6 +15,7 @@ export const app = express();
 
 app.listen(port, () => console.log(`WashTrak is listening on ${port}!`));
 app.use(bodyParser.json());
+app.use(cors());
 app.use(authMiddleware);
 
 app.use('/api/auth', authRoutes);
