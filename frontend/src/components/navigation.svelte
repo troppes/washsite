@@ -1,5 +1,5 @@
 <script>
-    import {onMount} from "svelte";
+import {onMount} from "svelte";
     import {userStore} from "$lib/stores.js";
 
     // Show mobile icon and display menu
@@ -29,9 +29,9 @@
     // Attach media query listener on mount hook
     onMount(() => {
         const mediaListener = window.matchMedia("(max-width: 767px)");
-
         mediaListener.addListener(mediaQueryHandler);
     });
+
 </script>
 
 <nav>
@@ -54,8 +54,12 @@
                     <a href={item.href}>{item.label}</a>
                 </li>
             {/each}
+            <li class="mobile-login">
+                <a href="/login">{#if $userStore !== null}Logout{:else}Login{/if}</a>
+            </li>
         {/if}
         </ul>
+        <a class="pure-button pure-button-primary login" href="/login"> {#if $userStore !== null}Logout{:else}Login{/if}</a>
     </div>
 </nav>
 
@@ -181,8 +185,18 @@
         font-size: 13px;
     }
 
+    @media only screen and (max-width: 767px) {
+        .login {
+            display: none;
+        }
+    }
+
     @media only screen and (min-width: 767px) {
         .mobile-icon {
+            display: none;
+        }
+
+        .mobile-login {
             display: none;
         }
 

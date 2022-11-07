@@ -8,7 +8,6 @@
     let error = '';
 
     async function login() {
-
         try {
             const user = await getUser(username, password);
             user['name'] = username;
@@ -18,6 +17,14 @@
             error = 'Incorrect username and password.';
         }
 
+    }
+
+    async function logout() {
+        userStore.set(null);
+        goto('/');
+    }
+    if($userStore !== null) {
+        logout();
     }
 
 </script>
