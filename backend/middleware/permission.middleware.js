@@ -30,7 +30,6 @@ export const hasRights = (req, res, next) => {
             case 'Basic':
                 return next();
             case 'Bearer':
-                console.log(req.userType);
                 const routes = userTypes[req.userType].routes;
                 if (routes) {
                     // Find out if the URL exists in the rights table
@@ -46,7 +45,7 @@ export const hasRights = (req, res, next) => {
         }
     }
 
-    statuscodes.send403(res, 'User has no permissions to this ressource');
+    statuscodes.send403(res, 'User has no permissions for this action.');
 
 }
 
