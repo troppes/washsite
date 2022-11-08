@@ -7,13 +7,12 @@ import {DISPLAY_PASSWORD, DISPLAY_USER} from '$env/static/private';
 
 export async function load({params}) {
     if (get(displayStore) === null) {
-
         const accessToken = await getUser(DISPLAY_USER, DISPLAY_PASSWORD);
         displayStore.set(accessToken['accessToken']);
     }
 
     return {
-        machines: getMachines()
+        machines: getMachines(get(displayStore))
     }
 
 }

@@ -7,11 +7,10 @@ export async function getUser(user, pass) {
     })
 
     if (response.ok) {
-        console.log(response);
         return response.json();
     } else {
         return response.text().then(text => {
-            throw new Error(text)
+            throw new Error(text);
         });
     }
 }

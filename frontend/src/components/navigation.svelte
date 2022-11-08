@@ -1,5 +1,5 @@
 <script>
-import {onMount} from "svelte";
+    import {onMount} from "svelte";
     import {userStore} from "$lib/stores.js";
 
     // Show mobile icon and display menu
