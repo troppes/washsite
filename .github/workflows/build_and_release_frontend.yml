@@ -1,4 +1,4 @@
-name: Build and release frontend
+name: Build and release backend
 
 # Controls when the action will run.
 on:
@@ -24,7 +24,7 @@ jobs:
             -   name: Build and push
                 uses: docker/build-push-action@v3
                 with:
-                    context: ./frontend
-                    file: ./frontend/Dockerfile
+                    context: ./backend
+                    file: ./backend/Dockerfile
                     push: true
-                    tags: ${{ secrets.DOCKER_HUB_USERNAME }}/washtrak_frontend:latest
+                    tags: ${{ secrets.DOCKER_HUB_USERNAME }}/washtrak_backend:latest
