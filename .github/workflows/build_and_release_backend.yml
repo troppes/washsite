@@ -3,7 +3,7 @@ name: Build and release backend
 # Controls when the action will run.
 on:
     push:
-        branches: [ main ]
+        branches: [ master ]
 
 jobs:
     build:
