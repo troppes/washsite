@@ -184,7 +184,7 @@
             <thead class="text-center">
             <tr>
                 <th>Name</th>
-                <th>Status</th>
+                <th>Role</th>
                 <th>Password</th>
                 <th>Action</th>
             </tr>
@@ -262,7 +262,7 @@
 
     table {
         margin-bottom: 2%;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 
     td, .text-center {
