@@ -12,13 +12,15 @@ jobs:
             -   name: Checkout
                 uses: actions/checkout@v3
 
+            -   name: Setup node
+                uses: actions/setup-node@v3
+
             -   name: Create env file
                 with:
                     working-directory: frontend
                 run: cp .env_dist .env
 
             -   name: Build and release
-                uses: actions/setup-node@v3
                 with:
                     working-directory: frontend
                     node-version: 16
