@@ -7,7 +7,7 @@ import {env} from '$env/dynamic/private';
 
 export async function load({params}) {
     if (get(displayStore) === null) {
-        const accessToken = await getUser(env.DISPLAY_USER, env.DISPLAY_PASSWORD);
+        const accessToken = await getUser(env.DISPLAY_USER, env.DISPLAY_PASSWORD, env.INTERNAL_BACKEND_URL);
         displayStore.set(accessToken['accessToken']);
     }
 

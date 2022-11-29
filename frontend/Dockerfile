@@ -11,7 +11,5 @@ WORKDIR /app
 COPY --from=build /app/release .
 COPY --from=build /app/package*.json .
 
-RUN npm ci
-
 EXPOSE 8080
 CMD [ "node", "index.js" ]
