@@ -8,6 +8,11 @@ import userRoutes from './routes/user.routes.js';
 import * as dotenv from 'dotenv';
 import cors from 'cors';
 
+// Stop on Ctrl + c in docker
+process.on('SIGINT', function() {
+    process.exit();
+});
+
 dotenv.config()
 
 const port = process.env.PORT;

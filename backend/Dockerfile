@@ -1,12 +1,11 @@
 FROM node:lts-alpine
 
-
 WORKDIR /app
 COPY . .
+COPY .env_dist .env
 
 RUN npm ci --only=production
-RUN npm run setup
 
 EXPOSE 3000
 
-CMD [ "node", "server.js" ]
+CMD [ "sh", "entrypoint.sh" ]
