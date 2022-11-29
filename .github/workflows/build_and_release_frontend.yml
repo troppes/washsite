@@ -16,6 +16,7 @@ jobs:
                 uses: actions/setup-node@v3
                 with:
                     node-version: 16
+            -   run: ls -l
             -   run: cp .env_dist .env
             -   run: npm ci --only-production
             -   run: npm run build
