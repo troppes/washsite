@@ -14,8 +14,8 @@ jobs:
 
             -   name: Build and release
                 uses: actions/setup-node@v3
-                working-directory: ./frontend
                 with:
+                    working-directory: ./frontend
                     node-version: 16
             -   run: ls -l
             -   run: cp .env_dist .env
