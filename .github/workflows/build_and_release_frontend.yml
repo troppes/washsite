@@ -14,16 +14,15 @@ jobs:
 
             -   name: Setup node
                 uses: actions/setup-node@v3
+                with:
+                    node-version: 16
 
             -   name: Create env file
-                with:
-                    working-directory: frontend
+                working-directory: frontend
                 run: cp .env_dist .env
 
             -   name: Build and release
-                with:
-                    working-directory: frontend
-                    node-version: 16
+                working-directory: frontend
                 run: npm ci --only-production && npm run build
 
             -   name: Login to Docker Hub
