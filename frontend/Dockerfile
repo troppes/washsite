@@ -1,11 +1,17 @@
-FROM node:lts-alpine
-
-# make the 'app' folder the current working directory
+FROM node:lts-alpine as build
 WORKDIR /app
+COPY . .
+COPY .env_dist .env
+RUN npm ci
+RUN npm run build
 
-# copy project files and folders to the current working directory (i.e. 'app' folder)
-COPY release/ .
+
+FROM node:lts-alpine
+WORKDIR /app
+COPY --from=build /app/release .
+COPY --from=build /app/package*.json .
+
+RUN npm ci
 
 EXPOSE 8080
-
 CMD [ "node", "index.js" ]
