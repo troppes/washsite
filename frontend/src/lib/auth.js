@@ -2,7 +2,6 @@ import { env } from '$env/dynamic/public';
 import {error} from "@sveltejs/kit";
 
 export async function getUser(user, pass, url = env.PUBLIC_BACKEND_URL) {
-    console.log(url);
     const response = await fetch(url + '/auth/login', {
         method: 'POST',
         headers: {
