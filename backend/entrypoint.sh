@@ -6,9 +6,11 @@ echo "User:         '$(whoami)'"
 echo "Group:        '$(id -g -n)'"
 echo "Working dir:  '$(pwd)'"
 
-# touch DB file
+# Create folder for db
+[ -d database ] || mkdir database
 
-if [[ ! -f "database.db" ]]; then
+# touch DB file
+if [[ ! -f "database/database.db" ]]; then
     npm run setup
 fi
 
