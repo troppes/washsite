@@ -46,7 +46,6 @@
 
                 let data = {};
                 let nodes = document.querySelectorAll("input[data-action='create-user']")
-                console.log(nodes);
                 for (let node of nodes) {
                     if (node.value == null || node.value === '') {
                         errorToast('Please fill out all fields!');
@@ -138,6 +137,8 @@
             <tr>
                 <th>Name</th>
                 <th>Status</th>
+                <th>Running Threshold</th>
+                <th>Spinning Threshold</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -148,6 +149,10 @@
                            placeholder="{machine.name}"></td>
                 <td><input data-id={machine.id} data-type='status' on:blur={updateHandler} data-table='machines'
                            placeholder="{machine.status}"></td>
+                <td><input data-id={machine.id} data-type='running_threshold' on:blur={updateHandler} data-table='machines'
+                    placeholder="{machine.running_threshold}"></td>
+                <td><input data-id={machine.id} data-type='spinning_threshold' on:blur={updateHandler} data-table='machines'
+                    placeholder="{machine.spinning_threshold}"></td>
                 <td><a class="pure-button pure-button button-error button-base login" data-table='machines'
                        data-id={machine.id} on:click="{deleteHandler}">Delete</td>
             </tr>
@@ -155,6 +160,8 @@
             <tr>
                 <td><input data-action='create-machine' data-type='name' placeholder="Name"></td>
                 <td><input data-action='create-machine' data-type='status' placeholder="Status"></td>
+                <td><input data-action='create-machine' data-type='running_threshold' placeholder="Run"></td>
+                <td><input data-action='create-machine' data-type='spinning_threshold' placeholder="Spin"></td>
                 <td><a class="pure-button pure-button button-sucess button-base login" data-table='machines'
                        on:click="{createHandler}">Create</a>
                 </td>
