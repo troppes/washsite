@@ -8,7 +8,7 @@ echo "Working dir:  '$(pwd)'"
 
 # touch DB file
 
-if [[ ! -f "database.db" ]]; then
+if [[ ! -f "database/database.db" ]]; then
     npm run setup
 fi
 

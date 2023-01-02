@@ -4,7 +4,7 @@ import * as dotenv from 'dotenv';
 
 dotenv.config()
 
-const db = new Database('database.db', {verbose: console.log});
+const db = new Database('database/database.db', {verbose: console.log});
 const saltRounds = 10;
 
 const DEMO_USERS = [
