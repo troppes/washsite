@@ -28,11 +28,11 @@ export default class {
     static async modifyMachineById(id, newName = null, newStatus = null, newRunT = null, newSpinT = null) {
         if (newName === null || newStatus === null || newRunT === null || newSpinT === null) {
             try {
-                const { name, status, runT, spinT } = await this.getMachineById(id);
+                const { name, status, running_threshold, spinning_threshold } = await this.getMachineById(id);
                 newName = newName || name;
                 newStatus = newStatus || status;
-                newRunT = newRunT || runT;
-                newSpinT = newSpinT || spinT;
+                newRunT = newRunT || running_threshold;
+                newSpinT = newSpinT || spinning_threshold;
             } catch (e) {
                 console.log(e);
                 return e;
@@ -47,7 +47,7 @@ export default class {
     static async modifyMachineByName(currentName, newName = null, newStatus = null, newRunT = null, newSpinT = null) {
         if (newName === null || newStatus === null || newRunT === null || newSpinT === null) {
             try {
-                const { name, status, running_threshold, spinning_threshold } = await this.getMachineById(id);
+                const { name, status, running_threshold, spinning_threshold } = await this.getMachineByName(currentName);
                 newName = newName || name;
                 newStatus = newStatus || status;
                 newRunT = newRunT || running_threshold;

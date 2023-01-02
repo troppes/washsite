@@ -72,8 +72,8 @@ export default class {
                 req.params.id,
                 req.body.name,
                 req.body.status,
-                req.body.running_treshold,
-                req.body.spinning_treshold);
+                req.body.running_threshold,
+                req.body.spinning_threshold);
             if (machine.hasOwnProperty('changes')) {
                 statuscodes.send200(res, 'Machine modified successfully');
             } else {
@@ -89,8 +89,8 @@ export default class {
                 req.params.name,
                 req.body.name,
                 req.body.status,
-                req.body.running_treshold,
-                req.body.spinning_treshold);
+                req.body.running_threshold,
+                req.body.spinning_threshold);
             if (machine.hasOwnProperty('changes')) {
                 statuscodes.send200(res, 'Machine modified successfully');
             } else {
