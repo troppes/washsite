@@ -1,11 +1,12 @@
 _id: spc_00332169420c423facfd46bf6f6ff736
 type: ApiSpec
 parentId: wrk_0a8dd59c83b94c72831fd19c9ed7e91b
-modified: 1666698769106
+modified: 1672736790188
 created: 1666015439244
 fileName: WashTrak
-contents: |+
+contents: >+
   openapi: 3.0.0
+
   info:
     description: "This is the description for the Washtrak API."
     version: 0.1.0
@@ -13,6 +14,12 @@ contents: |+
     license:
       name: MIT
       url: https://opensource.org/licenses/MIT
+    contact:
+      name: Florian Reitz
+      url: https://reitz.dev
+      email: flo@reitz.dev
+  servers:
+    - url: https://wahshback.reitz.dev
   tags:
     - name: auth
       description: Everything about the authentication
@@ -28,7 +35,7 @@ contents: |+
         tags:
           - auth
         summary: Authentication to obtain JWT token
-        description: ""
+        description: Authentication to obtain JWT token
         operationId: login
         responses:
             '200':
@@ -39,14 +46,15 @@ contents: |+
                     type: string
             "401":
               description: User not authenticated
-    /machines/:
+    /machines:
       get:
+        operationId: getMachine
         security:
           - bearerAuth: []
         tags:
           - machines
         summary: Gets all machines
-        description: ''
+        description: Gets all machines
         responses:
           "200":
             description: successful operation
@@ -65,12 +73,13 @@ contents: |+
           "409":
              description: The ressource-request returned an error
       put:
+        operationId: putMachine
         security:
           - bearerAuth: []
         tags:
           - machines
         summary: Adds a new machine
-        description: ''
+        description: 'Adds a new machine'
         requestBody:
           $ref: "#/components/requestBodies/MachineCreate"
         responses:
@@ -84,6 +93,7 @@ contents: |+
              description: The ressource-request returned an error
     "/machines/id/{id}":
       get:
+        operationId: getMachineById
         security:
           - bearerAuth: []
         tags:
@@ -114,12 +124,13 @@ contents: |+
           "409":
              description: The ressource-request returned an error
       delete:
+        operationId: deleteMachineById
         security:
           - bearerAuth: []
         tags:
           - machines
         summary: Deletes a machine by ID
-        description: ""
+        description: Deletes a machine by ID
         parameters:
           - name: id
             in: path
@@ -140,12 +151,13 @@ contents: |+
           "409":
              description: The ressource-request returned an error
       post:
+        operationId: updateMachineByID
         security:
           - bearerAuth: []
         tags:
           - machines
         summary: Updates a machine by ID
-        description: ""
+        description: Updates a machine by ID
         parameters:
           - name: id
             in: path
@@ -168,6 +180,7 @@ contents: |+
              description: The ressource-request returned an error
     "/machines/name/{name}":
       get:
+        operationId: getMachineByName
         security:
           - bearerAuth: []
         tags:
@@ -197,12 +210,13 @@ contents: |+
           "409":
              description: The ressource-request returned an error
       delete:
+        operationId: deleteMachineByName
         security:
           - bearerAuth: []
         tags:
           - machines
         summary: Deletes a machine by name
-        description: ""
+        description: Deletes a machine by name
         parameters:
           - name: name
             in: path
@@ -222,12 +236,13 @@ contents: |+
           "409":
              description: The ressource-request returned an error
       post:
+        operationId: updateMachineByName
         security:
           - bearerAuth: []
         tags:
           - machines
         summary: Updates a machine by name
-        description: ""
+        description: Deletes a machine by name
         parameters:
           - name: name
             in: path
@@ -248,14 +263,15 @@ contents: |+
             description: User has not the correct rights
           "409":
              description: The ressource-request returned an error
-    /users/:
+    /users:
       get:
+        operationId: getAllUsers
         security:
           - bearerAuth: []
         tags:
           - users
         summary: Gets all users
-        description: ''
+        description: Fetches all users
         responses:
           "200":
             description: successful operation
@@ -274,12 +290,13 @@ contents: |+
           "409":
              description: The ressource-request returned an error
       put:
+        operationId: putNewUser
         security:
           - bearerAuth: []
         tags:
           - users
         summary: Adds a new user
-        description: ''
+        description: Adds a new user
         requestBody:
           $ref: "#/components/requestBodies/UserCreate"
         responses:
@@ -294,6 +311,7 @@ contents: |+
              
     "/users/id/{id}":
       get:
+        operationId: getUserById
         security:
           - bearerAuth: []
         tags:
@@ -324,12 +342,13 @@ contents: |+
           "409":
              description: The ressource-request returned an error
       delete:
+        operationId: deleteUserById
         security:
           - bearerAuth: []
         tags:
           - users
         summary: Deletes a user by ID
-        description: ""
+        description: Delete a user by id
         parameters:
           - name: id
             in: path
@@ -350,12 +369,13 @@ contents: |+
           "409":
              description: The ressource-request returned an error
       post:
+        operationId: updateUserById
         security:
           - bearerAuth: []
         tags:
           - users
         summary: Updates a user by ID
-        description: ""
+        description: Updates a user by Id
         parameters:
           - name: id
             in: path
@@ -429,7 +449,15 @@ contents: |+
             enum:
               - running
               - ready
-              - spinning
+              - spinning  
+          running_threshold:
+            type: number
+            example: 0.4
+            description: Float value, that is multiplied with the base value and the added to it
+          spinning_threshold:
+            type: number
+            example: 6.2
+            description: Float value, that is multiplied with the base value and the added to it
       MachineCreate:
         type: object
         required:
@@ -446,6 +474,14 @@ contents: |+
               - running
               - ready
               - spinning
+          running_threshold:
+            type: number
+            example: 0.4
+            description: Float value, that is multiplied with the base value and the added to it
+          spinning_threshold:
+            type: number
+            example: 6.2
+            description: Float value, that is multiplied with the base value and the added to it
       MachineUpdate:
         type: object
         properties:
@@ -459,6 +495,15 @@ contents: |+
               - running
               - ready
               - spinning
+          running_threshold:
+            type: number
+            example: 0.4
+            description: Float value, that is multiplied with the base value and the added to it
+          spinning_threshold:
+            type: number
+            example: 6.2
+            description: Float value, that is multiplied with the base value and the added to it
+            
       User:
         type: object
         required:
@@ -473,7 +518,7 @@ contents: |+
           name:
             type: string
             example: user
-          password:
+          password_hash:
             type: string
             example: passwordHash
           type:

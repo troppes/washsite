@@ -1,7 +1,7 @@
 _id: env_env_13efe5b1bdfc711334363336c11ff39d410f4a2e_sub
 type: Environment
 parentId: env_13efe5b1bdfc711334363336c11ff39d410f4a2e
-modified: 1666694444887
+modified: 1672668441380
 created: 1666089217206
 name: OpenAPI env
 data:
@@ -10,7 +10,7 @@ data:
   host: localhost:3000
   httpUsername: flo
   httpPassword: test
-  bearerToken: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjMsInR5cGUiOiJhZG1pbiIsImp0aSI6IjRjOWI4ZjA3LWQ2OWYtNGU2MS05NjAxLTA5ZjAxNmI2YWFiNyIsImlhdCI6MTY2NjY5NDQzNH0.Ai6-hQPME8h0_JwNtt3SeRfV-qHEMWUbumbh7yZP6yc
+  bearerToken: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjMsInR5cGUiOiJhZG1pbiIsImp0aSI6ImUxODk2NWU0LTM0ZTAtNDExNC04YWRlLWIwOTJkYTFmM2UzNiIsImlhdCI6MTY3MjY2ODI2MywiZXhwIjoxNjcyNzU0NjYzfQ.XecZ-gYAomEGcUAVtQ_DhiPMvpl3AQ2F_G_3-FcTP6A
   base_url: localhost:3000/api
 dataPropertyOrder:
   "&":

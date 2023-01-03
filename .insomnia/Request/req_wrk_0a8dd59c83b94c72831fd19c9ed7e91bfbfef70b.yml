@@ -1,7 +1,7 @@
 _id: req_wrk_0a8dd59c83b94c72831fd19c9ed7e91bfbfef70b
 type: Request
 parentId: fld_wrk_0a8dd59c83b94c72831fd19c9ed7e91b6516c232
-modified: 1666698289265
+modified: 1672670665881
 created: 1666606066682
 url: "{{ base_url }}/machines/id/{{ id }}"
 name: Updates a machine by ID
@@ -11,7 +11,10 @@ body:
   mimeType: application/json
   text: |-
     {
-      "status": "chilling"
+      "name": "wash46",
+      "status": "spinning",
+    	"running_threshold": 0.5,
+    	"spinning_threshold": 6
     }
 parameters: []
 headers:
