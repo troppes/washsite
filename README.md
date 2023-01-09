@@ -8,7 +8,7 @@ For the backend an ExpressJS server was used, that offers REST-Routes for the da
 
 ## Frontend
 
-The frontend was built with Svelte-Kit. If offers support for user / machine creation, modificacion and deletion, as well as a dashboard for the current status of all machines. For more information please refer to the [Backend-Readme](https://github.com/troppes/washtrak/tree/master/frontend).
+The frontend was built with Svelte-Kit. If offers support for user / machine creation, modificacion and deletion, as well as a dashboard for the current status of all machines. For more information please refer to the [Frontend-Readme](https://github.com/troppes/washtrak/tree/master/frontend).
 
 ## Controller
 
