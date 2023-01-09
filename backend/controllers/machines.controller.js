@@ -5,7 +5,7 @@ export default class {
     static async getAllMachines(req, res) {
         try {
             let machines = await repository.getAllMachines();
-            return res.send({machines});
+            return res.send({ machines });
         } catch (e) {
             statuscodes.send409(res, e);
         }
@@ -16,7 +16,7 @@ export default class {
             if (machine === undefined) {
                 statuscodes.send404(res, 'Machine not found');
             } else {
-                return res.send({machine});
+                return res.send({ machine });
             }
         } catch (e) {
             statuscodes.send409(res, e);
@@ -28,7 +28,7 @@ export default class {
             if (machine === undefined) {
                 statuscodes.send404(res, 'Machine not found');
             } else {
-                return res.send({machine});
+                return res.send({ machine });
             }
         } catch (e) {
             statuscodes.send409(res, e);
@@ -60,7 +60,7 @@ export default class {
     }
     static async addNewMachine(req, res) {
         try {
-            await repository.addNewMachine(req.body.name, req.body.status);
+            await repository.addNewMachine(req.body.name, req.body.status, req.body.running_threshold, req.body.spinning_threshold);
             statuscodes.send200(res, 'Machine added successfully');
         } catch (e) {
             statuscodes.send409(res, e);
@@ -68,7 +68,12 @@ export default class {
     }
     static async modifyMachineById(req, res) {
         try {
-            const machine = await repository.modifyMachineById(req.params.id,req.body.name, req.body.status);
+            const machine = await repository.modifyMachineById(
+                req.params.id,
+                req.body.name,
+                req.body.status,
+                req.body.running_threshold,
+                req.body.spinning_threshold);
             if (machine.hasOwnProperty('changes')) {
                 statuscodes.send200(res, 'Machine modified successfully');
             } else {
@@ -80,7 +85,12 @@ export default class {
     }
     static async modifyMachineByName(req, res) {
         try {
-            const machine = await repository.modifyMachineByName(req.params.name, req.body.name, req.body.status);
+            const machine = await repository.modifyMachineByName(
+                req.params.name,
+                req.body.name,
+                req.body.status,
+                req.body.running_threshold,
+                req.body.spinning_threshold);
             if (machine.hasOwnProperty('changes')) {
                 statuscodes.send200(res, 'Machine modified successfully');
             } else {

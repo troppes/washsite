@@ -11,7 +11,7 @@ let userTypes = {
     'machine': {
         routes: [
             {route: '/api/auth', rights: ['GET']},
-            {route: '/api/machines', rights: ['POST', 'PUT']},
+            {route: '/api/machines', rights: ['GET', 'POST', 'PUT']},
         ]
     },
     'display': {
@@ -45,7 +45,7 @@ export const hasRights = (req, res, next) => {
         }
     }
 
-    statuscodes.send403(res, 'User has no permissions to this ressource');
+    statuscodes.send403(res, 'User has no permissions for this action.');
 
 }
 

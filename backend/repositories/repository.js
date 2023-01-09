@@ -21,38 +21,47 @@ export default class {
         return await dao.run("DELETE FROM machines WHERE name = ?", [name]);
     }
 
-    static async addNewMachine(name, status) {
-        return await dao.run("INSERT INTO machines (name, status) VALUES (?, ?)", [name, status]);
+    static async addNewMachine(name, status, runT, spinT) {
+        return await dao.run("INSERT INTO machines (name, status, running_threshold, spinning_threshold) VALUES (?, ?, ?, ?)", [name, status, runT, spinT]);
     }
 
-    static async modifyMachineById(id, newName = null, newStatus = null) {
-        if(newName === null || newStatus === null) {
+    static async modifyMachineById(id, newName = null, newStatus = null, newRunT = null, newSpinT = null) {
+        if (newName === null || newStatus === null || newRunT === null || newSpinT === null) {
             try {
-                const { name, status } = await this.getMachineById(id);
+                const { name, status, running_threshold, spinning_threshold } = await this.getMachineById(id);
                 newName = newName || name;
                 newStatus = newStatus || status;
-            } catch(e) {
+                newRunT = newRunT || running_threshold;
+                newSpinT = newSpinT || spinning_threshold;
+            } catch (e) {
                 console.log(e);
                 return e;
             }
         }
-        return await dao.run("UPDATE machines SET name = ?, status = ? WHERE id = ?", [newName, newStatus, id])
+        return await dao.run(
+            "UPDATE machines SET name = ?, status = ?, running_threshold = ?, spinning_threshold = ? WHERE id = ?",
+            [newName, newStatus, newRunT, newSpinT, id]
+        )
     }
 
-    static async modifyMachineByName(currentName, newName = null, newStatus = null) {
-        if(newName === null || newStatus === null) {
+    static async modifyMachineByName(currentName, newName = null, newStatus = null, newRunT = null, newSpinT = null) {
+        if (newName === null || newStatus === null || newRunT === null || newSpinT === null) {
             try {
-                const { name, status } = await this.getMachineById(id);
+                const { name, status, running_threshold, spinning_threshold } = await this.getMachineByName(currentName);
                 newName = newName || name;
                 newStatus = newStatus || status;
-            } catch(e) {
+                newRunT = newRunT || running_threshold;
+                newSpinT = newSpinT || spinning_threshold;
+            } catch (e) {
                 console.log(e);
                 return e;
             }
         }
-        return await dao.run("UPDATE machines SET name = ?, status = ? WHERE name = ?", [newName, newStatus, currentName]);
+        return await dao.run(
+            "UPDATE machines SET name = ?, status = ?, running_threshold = ?, spinning_threshold = ? WHERE name = ?",
+            [newName, newStatus, newRunT, newSpinT, currentName]);
     }
-    
+
     static async getAllUsers() {
         return await dao.all("SELECT * FROM users", []);
     }
@@ -61,23 +70,27 @@ export default class {
         return dao.get('SELECT * FROM users WHERE id = ?', [id]);
     }
 
+    static async getUserByName(name) {
+        return dao.get('SELECT * FROM users WHERE name = ?', [name]);
+    }
+
     static async addNewUser(name, hash, type) {
-        return await dao.run("INSERT INTO users (username, password, type) VALUES (?, ?, ?)", [name, hash, type]);
+        return await dao.run("INSERT INTO users (name, password_hash, type) VALUES (?, ?, ?)", [name, hash, type]);
     }
 
     static async modifyUserById(id, newName = null, newPasswordHash = null, newType = null) {
-        if(newName === null || newPasswordHash === null || newType == null) {
+        if (newName === null || newPasswordHash === null || newType == null) {
             try {
-                const { username, password, type } = await this.getUserById(id);
-                newName = newName || username;
-                newPasswordHash = newPasswordHash || password;
+                const { name, password_hash, type } = await this.getUserById(id);
+                newName = newName || name;
+                newPasswordHash = newPasswordHash || password_hash;
                 newType = newType || type;
-            } catch(e) {
+            } catch (e) {
                 console.log(e);
                 return e;
             }
         }
-        return await dao.run("UPDATE users SET username = ?, password = ?, type = ? WHERE id = ?", [newName, newPasswordHash, newType, id]);
+        return await dao.run("UPDATE users SET name = ?, password_hash = ?, type = ? WHERE id = ?", [newName, newPasswordHash, newType, id]);
     }
 
     static async deleteUserById(id) {
