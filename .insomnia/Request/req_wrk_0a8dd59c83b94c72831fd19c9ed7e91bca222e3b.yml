@@ -1,7 +1,7 @@
 _id: req_wrk_0a8dd59c83b94c72831fd19c9ed7e91bca222e3b
 type: Request
 parentId: fld_wrk_0a8dd59c83b94c72831fd19c9ed7e91b6516c232
-modified: 1666094535932
+modified: 1667219566063
 created: 1666092178538
 url: "{{ base_url }}/machines/"
 name: Gets all machines
@@ -12,7 +12,7 @@ parameters: []
 headers: []
 authentication:
   type: bearer
-  token: "{{bearerToken}}"
+  token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEsInR5cGUiOiJkaXNwbGF5IiwianRpIjoiNmNiNGMyNTUtMGIzNS00NmZmLWI3MmUtYjFmMjc2NzA3ZGMwIiwiaWF0IjoxNjY3MjE4NTAwfQ.uA_5ryW1A8U4UNFu1WnOz775lU26gu9bbbkfbSq1YMo
   prefix: ""
 metaSortKey: -1666092178538
 isPrivate: false
