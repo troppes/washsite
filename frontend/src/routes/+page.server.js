@@ -12,7 +12,7 @@ export async function load({params}) {
     }
 
     return {
-        machines: getMachines(get(displayStore))
+        machines: getMachines(get(displayStore), env.INTERNAL_BACKEND_URL)
     }
 
 }
