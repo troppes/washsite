@@ -56,4 +56,4 @@ For this project, the JWT tokens are set to not expire, since the washing machin
 
 ## Docker
 
-A dockerized Version of this controller can be found under: [https://hub.docker.com/repository/docker/floreitz/washtrak_backend/general](https://hub.docker.com/repository/docker/floreitz/washtrak_backend/general)
+A dockerized Version of the backend as well as the documentation can be found under: [https://hub.docker.com/repository/docker/floreitz/washtrak_backend/general](https://hub.docker.com/repository/docker/floreitz/washtrak_backend/general)
