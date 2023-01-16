@@ -17,19 +17,19 @@ int readIndex = 0;          // the index of the current reading
 double total = 0;              // the running total
 
 void setupKalman() {
-  // example of evolution matrix. Size is <Nstate,Nstate>
+  // evolution matrix
   K.F = {1.0, 0.0, 0.0,
          0.0, 1.0, 0.0,
          0.0, 0.0, 1.0};
-  // example of measurement matrix. Size is <Nobs,Nstate>
+  // measurement matrix
   K.H = {1.0, 0.0, 0.0,
          0.0, 1.0, 0.0,
          0.0, 0.0, 1.0};
-  // example of measurement covariance matrix. Size is <Nobs,Nobs>
+  // measurement covariance matrix
   K.R = {n_g*n_g, 0.0, 0.0,
          0.0, n_g*n_g, 0.0,
          0.0, 0.0, n_g*n_g};
-  // example of model covariance matrix. Size is <Nstate,Nstate>
+  // model covariance matrix
   K.Q = {m_g*m_g, 0.0, 0.0,
          0.0, m_g*m_g, 0.0,
          0.0, 0.0, m_g*m_g};

@@ -3,6 +3,7 @@ double base = 0;
 double runningDeviation, spinningDeviation;
 double runningThreshold, spinningThreshold;
 String currentStatus = "idle";
+bool reset = false;
 
 void setupStatus() {
   Serial.println("calculating baseline, please do not start the machine"); 
@@ -35,10 +36,19 @@ String calcStatus(double gx, double gy, double gz){
 
   if(currentVal > spinningThreshold) {
     currentStatus = "spinning";
+    reset = true;
   } else if(currentVal > runningThreshold) {
-    currentStatus = "running";
+      if (reset) {
+        currentStatus = "reset";
+      } else {
+        currentStatus = "running";
+      }
   } else {
-    currentStatus = "idle";
+    if (reset) {
+      currentStatus = "reset";
+    } else {
+      currentStatus = "idle";
+    }
   }
 
   return currentStatus;

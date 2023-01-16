@@ -11,20 +11,22 @@
 MPU6050 accelgyro;
 WiFiClientSecure client;
 
-const char* ssid = "Lord Voldemodem";
-const char* password =  "R3itz-WLAN";
+bool reboot = false;
+
+const char* ssid = "ssid";
+const char* password =  "password";
 
 // Login data for Website
-const char* api = "https://washback.reitz.dev/api/machines/name/H04W01";
-const char* loginApi = "https://washback.reitz.dev/api/auth/login";
-const char* apiUser = "machine";
-const char* apiPass = "machine";
+const char* api = "url";
+const char* loginApi = "url";
+const char* apiUser = "user";
+const char* apiPass = "pass";
 String apiToken = "";
 
 // Only for Debugging
-const bool debug = true;
-const char* debugServer = "https://cms.reitz.dev/items/washtrak";
-const char* debugJWT = "Bearer 176OS-NMq4MPxfcscCuTMEnKsxgroENI";
+const bool debug = false;
+const char* debugServer = "url";
+const char* debugJWT = "Bearer token";
 
 int16_t ax, ay, az, gx, gy, gz;
 
@@ -122,7 +124,7 @@ void loop(void) {
       calcAverages(averages);
       calcMedians(medians);
       // calculate the current status based on the averages
-      String status = calcStatus(medians[0], medians[1] ,averages[2]);
+      String status = calcStatus(medians[0], medians[1], medians[2]);
 
       // Print Medians & Averages
       Serial.println((String) "Curr Average: " + (abs(averages[0]) + abs(averages[1]) + abs(averages[2])));
@@ -135,6 +137,12 @@ void loop(void) {
 
       DynamicJsonDocument data(1024);
       data["status"] = status; 
+
+      if(strcmp(status.c_str(),"reset") == 0) {
+        Serial.println("Run finished, restarting after sending the data...");
+        data["status"] = "idle"; 
+        reboot = true;
+      }
 
       String json;
       serializeJson(data, json);
@@ -172,6 +180,11 @@ void loop(void) {
         Serial.println((String)"Status Code (Debug): " + http.POST(json));
 
         http.end();
+      }
+
+      if(reboot) {
+        Serial.println("Rebooting now...");
+        ESP.restart();        
       }
     } 
     lastTime = millis();
