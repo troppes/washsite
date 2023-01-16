@@ -92,9 +92,7 @@ void setup(void) {
   }
 
   Serial.println((String)"Connected to WiFi network with IP Address: " + WiFi.localIP().toString());
-
-  // disable fingerprint vertification for the http client
-  client.setInsecure();
+  client.setInsecure(); // disable fingerprint vertification for the http client
   apiToken = "Bearer " + getJWTToken();
   setThresholds();
 
@@ -115,7 +113,7 @@ void setup(void) {
   Serial.println(accelgyro.testConnection() ? "MPU6050 connection successful" : "MPU6050 connection failed");
   
   // setup gyro
-  //setupGyroOffsets();
+  setupGyroOffsets();
 
   // setup readings
   setupReading();

@@ -1,19 +1,14 @@
 const int statusReadings = 5;
+int base = 0;
 // base offset is used to make the calculations more reliable, e.g. if the gx = 0; then an deviation doesnt do anything
 const int baseOffset = 3;
-double runningDeviation = 0;
-double spinningDeviation = 0;
-
+double runningDeviation, spinningDeviation;
+int runningThreshold, spinningThreshold;
 
 int readings[statusReadings];  // the readings from the analog input
 int readIndex = 0;          // the index of the current reading
 int total = 0;              // the running total
-int average = 0;            // the average
 String currentStatus = "idle";
-int currentVal = 0;
-
-int baseMin, baseMax;
-int runningThreshold, spinningThreshold;
 
 void setupStatus() {
   Serial.println("calculating baseline, please do not start the machine"); 
@@ -26,11 +21,10 @@ void setupStatus() {
     delay(100);
   } 
 
-  int currentTotal = total / statusReadings + baseOffset;
+  base = total / statusReadings + baseOffset;
 
-  Serial.println(runningDeviation);
-  runningThreshold = currentTotal + (currentTotal * runningDeviation);
-  spinningThreshold = currentTotal + (currentTotal * spinningDeviation);
+  runningThreshold = base + (base * runningDeviation);
+  spinningThreshold = base + (base * spinningDeviation);
 
   Serial.println("calculation finished");  
 
@@ -64,16 +58,16 @@ void addStatusReading(int ax, int ay, int az, int gx, int gy, int gz){
   } else {
     currentStatus = "idle";
   }
-
-
 }
 
 double setRunningDeviation(double deviation){
   runningDeviation = deviation;
+  runningThreshold = base + (base * runningDeviation);
 };
 
 double setSpinningDeviation(double deviation){
   spinningDeviation = deviation;
+  spinningThreshold = base + (base * spinningDeviation);
 };
 
 String getCurrentStatus(){
