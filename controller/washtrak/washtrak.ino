@@ -11,26 +11,22 @@
 MPU6050 accelgyro;
 WiFiClientSecure client;
 
-int vibration_pin = 4;
-const char* ssid = "Lord Voldemodem";
-const char* password =  "R3itz-WLAN";
+const char* ssid = "ssid";
+const char* password =  "password";
 
 // Login data for Website
-const char* api = "https://washback.reitz.dev/api/machines/name/H04W01";
-const char* loginApi = "https://washback.reitz.dev/api/auth/login";
-const char* apiUser = "machine";
-const char* apiPass = "machine";
+const char* api = "url";
+const char* loginApi = "url";
+const char* apiUser = "user";
+const char* apiPass = "pass";
 String apiToken = "";
 
 // Only for Debugging
-const bool debug = true;
-const char* debugServer = "https://cms.reitz.dev/items/washtrak";
-const char* debugJWT = "Bearer 176OS-NMq4MPxfcscCuTMEnKsxgroENI";
+const bool debug = false;
+const char* debugServer = "url";
+const char* debugJWT = "Bearer token";
 
 int16_t ax, ay, az, gx, gy, gz;
-
-#define LED_PIN 13
-bool blinkState = false;
 
 // the following variables are unsigned longs because the time, measured in
 // milliseconds, will quickly become a bigger number than can be stored in an int.
@@ -38,13 +34,6 @@ unsigned long lastTime = 0;
 unsigned long timerDelay = 5000;
 
 int averages[6];
-
-long readData() {
-  delay(10);
-  long measurement = pulseIn(vibration_pin, HIGH);
-
-  return measurement;
-}
 
 void setThresholds() {
 
@@ -131,7 +120,7 @@ void loop(void) {
 
   //Send an HTTP POST request every 5 seconds
   if ((millis() - lastTime) > timerDelay) {
-    if(WiFi.status()== WL_CONNECTED){
+    if(WiFi.status() == WL_CONNECTED){
       // fills the averages array
       calcAverages(averages);
       // calculate the current status based on the averages
@@ -144,6 +133,10 @@ void loop(void) {
 
       DynamicJsonDocument data(1024);
       data["status"] = getCurrentStatus(); 
+
+      if(strcmp(data["status"],"reset") == 0) {
+        ESP.restart();
+      }
 
       String json;
       serializeJson(data, json);
@@ -190,9 +183,4 @@ void loop(void) {
     } 
     lastTime = millis();
   }
-  
-  // blink LED to indicate activity
-  blinkState = !blinkState;
-  digitalWrite(LED_PIN, blinkState);
-  delay(10);
 }

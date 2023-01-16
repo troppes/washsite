@@ -9,6 +9,7 @@ int readings[statusReadings];  // the readings from the analog input
 int readIndex = 0;          // the index of the current reading
 int total = 0;              // the running total
 String currentStatus = "idle";
+bool reset = false;
 
 void setupStatus() {
   Serial.println("calculating baseline, please do not start the machine"); 
@@ -53,10 +54,19 @@ void addStatusReading(int ax, int ay, int az, int gx, int gy, int gz){
 
   if(currentTotal > spinningThreshold) {
     currentStatus = "spinning";
-  } else if(currentTotal > runningThreshold) {
-    currentStatus = "running";
+    reset = true;
+  } else if (currentTotal > runningThreshold) {
+    if (reset) {
+      currentStatus = "reset";
+    } else {
+      currentStatus = "running";
+    }
   } else {
-    currentStatus = "idle";
+    if (reset) {
+      currentStatus = "reset";
+    } else {
+      currentStatus = "idle";
+    }
   }
 }
 
