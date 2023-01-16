@@ -1,38 +1,43 @@
-# create-svelte
+## Setup
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+To configure the server, rename the .env_dist to .env and edit the variables.
 
-## Creating a project
+To setup the dev-enviroment, use the script `npm i` followed by `npm run dev`.
 
-If you're seeing this, you've probably already done this step. Congrats!
+If you are planning on putting the system into production please use `npm i` followed by `npm run build`. The production server can then be found in `release` and can be started with `node release/index.js`
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## Usage Instructions
 
-# create a new project in my-app
-npm create svelte@latest my-app
+When first visiting the website and error can occur on the homepage. This happens, because the user in the .env file is not yet created. To fix this log into the website and on the administration tab create a user with the `display` role. If you want to edit anything you can click into the table.
+
+### Thresholds
+
+When creating a washing machine two fields called running/spinning threshold are needed. These thresholds define at which level of vibration the machines changes it status. For finding the correct values please refer to the [controller readme](https://github.com/troppes/washtrak/tree/master/controller).
+
+## Environment variables
+
+### Backend URLs
+
+The frontend has two possible backend urls, if you are not using docker, both of should be the same, refering to the backend. Otherwise please refer to the Docker manual below.
+
+```
+PUBLIC_BACKEND_URL=http://localhost:3000/api
+INTERNAL_BACKEND_URL=http://localhost:3000/api
 ```
 
-## Developing
+### Display user
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+For the frontend to work a user with the display rights is needed. That can be either the admin (which is not recommended for security reasons) or a user of the type display.
+A creation of the user can be either done though the API, or in the frontend directly. For this ignore the error on the homepage and log in as an admin. Then create the display user and the frontend should work now properly.
 
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+```
+DISPLAY_USER=display
+DISPLAY_PASSWORD=display
 ```
 
-## Building
+### Port
+`PORT=8080`
 
-To create a production version of your app:
+## Docker
 
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+A dockerized Version of the frontend as well as the documentation can be found under: [https://hub.docker.com/repository/docker/floreitz/washtrak_frontend/general](https://hub.docker.com/repository/docker/floreitz/washtrak_frontend/general)
