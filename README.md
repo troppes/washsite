@@ -16,11 +16,11 @@ The controller collects the sensor data and calculates the current status of the
 
 ## Container
 
-There are two containers available for deployment purposes. If you only want to deploy the backend, please refer to the API-Documentation: COMING SOON!
+There are two containers available for deployment purposes. If you only want to deploy the backend, please refer to the API-Documentation for building a frontend: [https://troppes.github.io/washtrak/](https://troppes.github.io/washtrak/)
 
 ### Docker-Compose
 
-A docker-compose file can be found at [https://github.com/troppes/washtrak/blob/master/docker-compose.yml](https://github.com/troppes/washtrak/blob/master/docker-compose.yml). It assumes the deployment for localhost. If you want to deploy in production, please refer to the Readme-Files at Dockerhub. Links can be found in the specific Readme-Files for the frontend and backend.
+A docker-compose file can be found at [https://github.com/troppes/washtrak/blob/master/docker-compose.yml](https://github.com/troppes/washtrak/blob/master/docker-compose.yml). It assumes the deployment for localhost. If you want to deploy in production, please refer to the Readme-Files at Dockerhub. Links can be found in the Readme-Files for the frontend and backend.
 
 ### Ansible
 
