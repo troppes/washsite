@@ -46,9 +46,13 @@ The rights can be translated the following way:
 | PUT  | UPDATE  |
 | DELETE | DELETE |
 
-## Routes
+### API-Documentation for the routes
 
-A full documentation of all routes can be found under: COMING SOON.
+The documentation for the Backend-API can be found at [https://troppes.github.io/washtrak/](https://troppes.github.io/washtrak/).
+
+### Insomnia
+
+The Insomnia folder in the root directory contains a document to test out all routes of the backend.
 
 ## Token Expiry
 
