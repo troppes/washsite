@@ -1,26 +1,28 @@
 _id: env_env_13efe5b1bdfc711334363336c11ff39d410f4a2e_sub
 type: Environment
 parentId: env_13efe5b1bdfc711334363336c11ff39d410f4a2e
-modified: 1673258033400
+modified: 1673959728529
 created: 1666089217206
 name: Enviroment
 data:
   scheme: http
   base_path: ""
-  host: localhost:3000
-  httpUsername: flo
-  httpPassword: test
-  bearerToken: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjMsInR5cGUiOiJhZG1pbiIsImp0aSI6ImUxODk2NWU0LTM0ZTAtNDExNC04YWRlLWIwOTJkYTFmM2UzNiIsImlhdCI6MTY3MjY2ODI2MywiZXhwIjoxNjcyNzU0NjYzfQ.XecZ-gYAomEGcUAVtQ_DhiPMvpl3AQ2F_G_3-FcTP6A
+  httpUsername: user
+  httpPassword: pass
+  bearerToken: ey123456789
   base_url: localhost:3000/api
+  id: 1
+  name: name
 dataPropertyOrder:
   "&":
     - scheme
     - base_path
-    - host
     - httpUsername
     - httpPassword
     - bearerToken
     - base_url
+    - id
+    - name
 color: null
 isPrivate: false
 metaSortKey: 1666089217206
