@@ -1,6 +1,6 @@
 # WashTrak
 
-This repository offers a hardware solution 
+WashTrak allows for the tracking of the current state of the washing machine. For this it uses a ESP32-Board with a MPU-6050 sensor.
 
 ## Backend
 
