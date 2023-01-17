@@ -1,6 +1,6 @@
 # WashTrak
 
-This repository offers 
+This repository offers a hardware solution 
 
 ## Backend
 
@@ -12,7 +12,7 @@ The frontend was built with Svelte-Kit. If offers support for user / machine cre
 
 ## Controller
 
-Coming soon!
+The controller collects the sensor data and calculates the current status of the machine. It then connects to the REST-API and uploads the results. The software is written in C/C++ for Arduino. For more information please refer to the [Controller-Readme](https://github.com/troppes/washtrak/tree/master/controller).
 
 ## Container
 
@@ -26,3 +26,8 @@ A docker-compose file can be found at [https://github.com/troppes/washtrak/blob/
 
 A simple ansible deployment task can be found at [https://github.com/troppes/playbooks-public/tree/main/docker/roles/washtrak](https://github.com/troppes/playbooks-public/tree/main/docker/roles/washtrak)
 
+## Future
+
+- After measuring the payment gateway, it was found out that a pin delivers a different voltage depending if the machine is running or not. This can be used for build a better start/end detection.
+
+- During the measurement we detected also that is was possible to skip the payment by shorting two pins. This can potentially be used later on for online payments.
