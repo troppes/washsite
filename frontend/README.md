@@ -40,4 +40,4 @@ DISPLAY_PASSWORD=display
 
 ## Docker
 
-A dockerized Version of the frontend as well as the documentation can be found under: [https://hub.docker.com/repository/docker/floreitz/washtrak_frontend/general](https://hub.docker.com/repository/docker/floreitz/washtrak_frontend/general)
+A dockerized Version of the frontend as well as the documentation can be found under: [https://hub.docker.com/r/floreitz/washtrak_frontend](https://hub.docker.com/r/floreitz/washtrak_frontend)
