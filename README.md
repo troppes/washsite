@@ -4,15 +4,15 @@ WashTrak allows you to track the current status of your washing machine. It uses
 
 ## Backend
 
-The backend uses an ExpressJS server that provides REST routes for the data from all the machines currently in use. More information can be found in the [Backend Readme] (https://github.com/troppes/washtrak/tree/master/backend).
+The backend uses an ExpressJS server that provides REST routes for the data from all the machines currently in use. More information can be found in the [Backend Readme](https://github.com/troppes/washtrak/tree/master/backend).
 
 ## Frontend
 
-The frontend has been built using Svelte-Kit. It provides support for creating, modifying and deleting users/machines, as well as a dashboard for the current status of all machines. More information can be found in the [Frontend Readme] (https://github.com/troppes/washtrak/tree/master/frontend).
+The frontend has been built using Svelte-Kit. It provides support for creating, modifying and deleting users/machines, as well as a dashboard for the current status of all machines. More information can be found in the [Frontend Readme](https://github.com/troppes/washtrak/tree/master/frontend).
 
 ## Controller
 
-The Controller collects the sensor data and calculates the current status of the machine. It then connects to the REST API and uploads the results. The software is written in C/C++ for Arduino. More information can be found in the [Controller Readme] (https://github.com/troppes/washtrak/tree/master/controller).
+The Controller collects the sensor data and calculates the current status of the machine. It then connects to the REST API and uploads the results. The software is written in C/C++ for Arduino. More information can be found in the [Controller Readme](https://github.com/troppes/washtrak/tree/master/controller).
 
 ## Deployment Options
 
