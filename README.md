@@ -18,7 +18,7 @@ The Controller collects the sensor data and calculates the current status of the
 
 ### Container
 
-There is a [Backend Container](https://hub.docker.com/repository/docker/floreitz/washtrak_backend) and a [Frontend Container](https://hub.docker.com/repository/docker/floreitz/washtrak_frontend) available for quick deployment. If you only want to deploy the backend, please see the API documentation for building a frontend: [API-documentation](https://troppes.github.io/washtrak/)
+There is a [Backend Container](https://hub.docker.com/r/floreitz/washtrak_backend) and a [Frontend Container](https://hub.docker.com/r/floreitz/washtrak_frontend) available for quick deployment. If you only want to deploy the backend, please see the API documentation for building a frontend: [API-documentation](https://troppes.github.io/washtrak/)
 
 ### Docker Compose
 
