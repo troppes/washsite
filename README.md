@@ -18,15 +18,15 @@ The Controller collects the sensor data and calculates the current status of the
 
 ### Container
 
-There is a [Backend Container](https://hub.docker.com/repository/docker/floreitz/washtrak_backend) and a [Frontend Container](https://hub.docker.com/repository/docker/floreitz/washtrak_frontend) available for quick deployment. If you only want to deploy the backend, please see the API documentation for building a frontend: [https://troppes.github.io/washtrak/](https://troppes.github.io/washtrak/)
+There is a [Backend Container](https://hub.docker.com/repository/docker/floreitz/washtrak_backend) and a [Frontend Container](https://hub.docker.com/repository/docker/floreitz/washtrak_frontend) available for quick deployment. If you only want to deploy the backend, please see the API documentation for building a frontend: [API-documentation](https://troppes.github.io/washtrak/)
 
 ### Docker Compose
 
-A docker-compose file can be found at [https://github.com/troppes/washtrak/blob/master/docker-compose.yml](docker-compose.yml). It assumes deployment to localhost. If you want to deploy in production, please refer to the readme files on Dockerhub for configuration details. Links can be found above and in the front-end and back-end readme files.
+A docker-compose file can be found at: [docker-compose.yml](https://github.com/troppes/washtrak/blob/master/docker-compose.yml). It assumes deployment to localhost. If you want to deploy in production, please refer to the readme files on Dockerhub for configuration details. Links can be found above and in the front-end and back-end readme files.
 
 #### Ansible
 
-An Ansible deployment task can be found at [https://github.com/troppes/playbooks-public/tree/main/docker/roles/washtrak](washtrak-role)
+An Ansible deployment task can be found at: [washtrak-role](https://github.com/troppes/playbooks-public/tree/main/docker/roles/washtrak)
 
 ## Future
 
