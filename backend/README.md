@@ -2,15 +2,15 @@
 
 To configure the server, rename the .env_dist to .env and edit the variables.
 
-To create the SQLite database, use the script `npm i` followed by `npm run setup`. With this the database will be created. To customize the database entries further you can look into the `setupDatabase.js`.
+To create the SQLite database, use the `npm i` script followed by `npm run setup`. This will create the database. To further customise the database entries, you can look at `setupDatabase.js`.
 
 ## Authentication
 
-To authenticate yourself, please use the `/api/auth/login` route, it requieres basic auth Afterwards, a JWT token is created. All other routes are only accessible wit that token.
+To authenticate yourself, please use the `/api/auth/login` route. It uses basic auth and will create a JWT token. All other routes are only accessible with this token.
 
-## Enviroment Variables
+## Environment variables
 
-If variables are set by the docker container, they will be read first. Afterwards the variables from the .env file will be used. There are currently four variables to be set
+Firstly, the environment variables given into the container are used. Afterwards, the variables from the .env file are used. Currently, there are four variables to set
 
 ```
 API_ADMIN=admin
@@ -18,46 +18,46 @@ API_PASSWORD=admin
 ```
 To set the primary admin.
 
-```DEMO_DATA=FALSE```
-Which creates demo data, to play around with the backend. The demo data creates three washing machines and a display user, which is useful testing the frontend
+DEMO_DATA=FALSE
+This creates demo data to play around with the backend. The demo data creates three washing machines and a display user, which is useful for testing the frontend.
 
 ```PORT=3000```
 Set the desired port
 
-## User creation
+## Creating users
 
-For creating users, use the route `/api/users`.
+To create users, use the `/api/users` route.
 
-For creating a user, a type is necessary.
+To create a user, a type is needed.
 Currently, there are 3 different user types to choose from:
-| Type  | Rights  |
+| Type | Rights |
 |---|---|
-| admin |  ALL |
-| machine  | WRITE / Update / READ on machines   |
-| display  | READ on machines  |
+| admin | ALL |
+| machine | WRITE / UPDATE / READ on machines |
+| display | READ on machines |
 
 ### Rights
 
-The rights can be translated the following way:
-| Right  | CRUD-Equivalent  |
+The rights can be translated as follows
+| right | CRUD equivalent |
 |---|---|
-| POST  | CREATE  |
-| GET  | READ  |
-| PUT  | UPDATE  |
+| POST | CREATE |
+| GET | READ |
+| PUT | UPDATE |
 | DELETE | DELETE |
 
-### API-Documentation for the routes
+### API documentation for the routes
 
-The documentation for the Backend-API can be found at [https://troppes.github.io/washtrak/](https://troppes.github.io/washtrak/).
+The documentation for the backend API can be found at [https://troppes.github.io/washtrak/](https://troppes.github.io/washtrak/).
 
 ### Insomnia
 
-The Insomnia folder in the root directory contains a document to test out all routes of the backend.
+The Insomnia folder in the root directory contains a document for testing all backend routes.
 
-## Token Expiry
+## Token expiry
 
-For this project, the JWT tokens are set to not expire, since the washing machine should update the inputs for a long time. If you need expiry for your project, it can be changed in the `middleware\auth.middleware.js` file.
+For this project, the JWT tokens are set to not expire, as the washing machine should update the inputs for a long time. If you need expiry for your project, it can be changed in the `middleware\auth.middleware.js` file.
 
 ## Docker
 
-A dockerized Version of the backend as well as the documentation can be found under: [https://hub.docker.com/r/floreitz/washtrak_frontend](https://hub.docker.com/r/floreitz/washtrak_frontend)
+A dockerised version of the backend and documentation can be found at [https://hub.docker.com/r/floreitz/washtrak_frontend](https://hub.docker.com/r/floreitz/washtrak_frontend)
