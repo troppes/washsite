@@ -5,7 +5,7 @@ import statuscodes from "../lib/statuscodes.js";
 const {APP_SECRET = 'secret'} = process.env;
 
 export const encodeToken = (tokenData) => {
-    return njwt.create(tokenData, APP_SECRET).compact();
+    return njwt.create(tokenData, APP_SECRET).setExpiration().compact();
 }
 
 const decodeToken = (token) => {
